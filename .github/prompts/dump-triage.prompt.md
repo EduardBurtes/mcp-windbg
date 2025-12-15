@@ -1,11 +1,10 @@
 ---
-mode: 'agent'
-model: Claude Sonnet 4
-tools: ['mcp_windbg/list_windbg_dumps', 'mcp_windbg/open_windbg_dump', 'mcp_windbg/run_windbg_cmd', 'mcp_windbg/close_windbg_dump']
+agent: agent
+tools: ['mcp_windbg/*']
 description: 'Comprehensive single crash dump analysis with detailed metadata extraction and structured reporting'
 ---
 
-Perform comprehensive analysis of a single Windows crash dump with detailed metadata extraction, callstack analysis, and structured markdown reporting.
+Perform comprehensive analysis of a single Windows crash dump with detailed metadata extraction, call stack analysis, and structured markdown reporting.
 
 ## WORKFLOW - Execute in this exact sequence:
 
@@ -31,7 +30,7 @@ and tell him to wait since the analysis keeps running in the background and will
 **Then extract additional metadata with:** `run_windbg_cmd`
 - **Command 1:** `vertarget` (OS version and platform details)
 - **Command 2:** `lm` (loaded modules list)
-- **Command 3:** `k` (callstack)
+- **Command 3:** `k` (call stack)
 - **Command 4:** `.time` (dump creation time)
 - **Command 5:** `!peb` (process environment details)
 - **Command 6:** `r` (registers)
@@ -74,7 +73,7 @@ and tell him to wait since the analysis keeps running in the background and will
 - **Module Base Address:** [0x12345678]
 
 **Call Stack Analysis:**
-```
+
 Frame Module!Function+Offset                               Parameters
 ===== ================================================== ==================
 [0]   module!function+0x123                              param1, param2, param3
@@ -83,7 +82,6 @@ Frame Module!Function+Offset                               Parameters
 [3]   module!function+0xabc
 [4]   module!function+0xdef
 [5]   [Continue with full stack...]
-```
 
 **Thread Information:**
 - **Crashing Thread ID:** [Thread ID]
